@@ -1,0 +1,108 @@
+#contenerMainSettings {
+    font-weight: 700;
+    padding: 15px;
+    font-size: 17px;
+    text-align: center
+}
+#titleContener > h1 {
+    margin: 0 -20;
+    padding: 15px 0;
+    font-size: 34px;
+    border-bottom: 3px dotted black;
+    user-select: none;
+    font-family: 'Black Ops One', cursive;
+}
+.error__playerSelectedMultipleTimes {
+    background-color: #FFD700;
+    cursor: help;
+}
+.tableMarginBottom {
+    margin-bottom: 20px
+}
+#table_defaultSettings {
+    margin: 0 30px 20px 0;
+    float: left;
+}
+.printButton {
+    cursor: pointer;
+    border: 3.5px solid #5555ff;
+    border-radius: 20px;
+    padding: 4px 7px 4px 7px;
+    font-weight: 700;
+    margin: 7px 3px 7px 3px;
+    background-color: #ccccff;
+    font-family: 'Black Ops One', cursive;
+    font-size: 14px;
+    user-select: none;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.59);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.59);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.59);
+}
+
+body {
+    background: url(img/tloBody.png);
+    margin: 0;
+    padding: 0;
+    font-family: 'Eczar', serif;
+    text-align: center;
+    cursor: default;
+}
+#contener {
+    display: inline-block;
+    background: url(img/tlo.png);
+    padding: 0 20px 0 20px;
+    min-height: 100%;
+}
+#colLeft {
+    float: inherit;
+    display: inline-flex;
+    margin-bottom: 25px;
+}
+#colRight {
+    float: none;
+    margin-left: 20px;
+    display: inline-grid;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 2.7px 8px 2.7px 8px;
+}
+table {
+    margin: 0 auto 0 auto;
+}
+.table {
+    background: url(img/tloTable.png);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.59);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.59);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.59);
+}
+.labelCheckbox {
+    display: block;
+    width: 100%;
+    text-align: center;
+    vertical-align: center;
+    min-height: 26px;
+    cursor: pointer
+}
+.checkbox {
+    margin-top: 7px;
+}
+input[type=checkbox], select{
+    cursor: pointer;
+}
+.specialFont {
+    font-size: 16px;
+    color: #600;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+#tableAddOptionHead > th {
+    font-size: 14px;
+}
+.select_main {
+    padding: 5px;
+    border-radius: 5px;
+    border: 3px solid #00f;
+    font-size: 14px;
+    font-weight: 700;
+}
