@@ -21,13 +21,10 @@
                 <tr><th colspan="2">Podstawowe ustawienia</th></tr>
                 <tr id="tableAddOptionHead">
                     <th>Rodzaj rozgrywek ligowych</th>
-                    <td>
-                        <select id="mainSetting_rodzaj"
-                                class="select_main" onChange="mainSetting_afterChangeKind()">
-                            <option value="SM" checked>Superliga Mężczyzn</option>
-                            <option value="CLJ">CLJ</option>
-                        </select>
-                    </td>
+                    <td> <select id="mainSetting_rodzaj" class="select_main" onChange="mainSetting_afterChangeKind()">
+                        <option value="SM" checked>Superliga Mężczyzn</option>
+                        <option value="CLJ">CLJ</option>
+                    </select> </td>
                 </tr>
                 <tr id="tableAddOptionHead">
                     <th>Rodzaj czcionki w pliku PDF</th>
@@ -36,64 +33,47 @@
             </table>
             <table class="table">
                 <tr><th>Karty zmian i inne</th></tr>
-                <tr>
-                    <td>
-                        <select class="kartyZmian_select">
-                            <option value=0 selected="selected">Gospodarz zmiana 1.</option>
-                            <option value=1>Gospodarz zmiana 2.</option>
-                            <option value=2>Gość zmiana 1.</option>
-                            <option value=3>Gość zmiana 2.</option>
-                            <option value=4>Karta gry zawodnika</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <select class="kartyZmian_select">
-                            <option value=0>Gospodarz zmiana 1.</option>
-                            <option value=1 selected="selected">Gospodarz zmiana 2.</option>
-                            <option value=2>Gość zmiana 1.</option>
-                            <option value=3>Gość zmiana 2.</option>
-                            <option value=4>Karta gry zawodnika</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <select class="kartyZmian_select">
-                            <option value=0>Gospodarz zmiana 1.</option>
-                            <option value=1>Gospodarz zmiana 2.</option>
-                            <option value=2 selected="selected">Gość zmiana 1.</option>
-                            <option value=3>Gość zmiana 2.</option>
-                            <option value=4>Karta gry zawodnika</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <select class="kartyZmian_select">
-                            <option value=0>Gospodarz zmiana 1.</option>
-                            <option value=1>Gospodarz zmiana 2.</option>
-                            <option value=2>Gość zmiana 1.</option>
-                            <option value=3 selected="selected">Gość zmiana 2.</option>
-                            <option value=4>Karta gry zawodnika</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label class="labelCheckbox">
-                            <button onclick="kartyZmian_onPrint()" id="kartyZmian_print" class="printButton">
-                                Drukuj karty zmian
-                            </button>
-                        </label>
-                    </th>
-                </tr>
+                <tr> <td> <select class="kartyZmian_select">
+                    <option value=0 selected="selected">Gospodarz zmiana 1.</option>
+                    <option value=1>Gospodarz zmiana 2.</option>
+                    <option value=2>Gość zmiana 1.</option>
+                    <option value=3>Gość zmiana 2.</option>
+                    <option value=4>Karta gry zawodnika</option>
+                </select> </td> </tr>
+                <tr> <td> <select class="kartyZmian_select">
+                    <option value=0>Gospodarz zmiana 1.</option>
+                    <option value=1 selected="selected">Gospodarz zmiana 2.</option>
+                    <option value=2>Gość zmiana 1.</option>
+                    <option value=3>Gość zmiana 2.</option>
+                    <option value=4>Karta gry zawodnika</option>
+                </select> </td> </tr>
+                <tr> <td> <select class="kartyZmian_select">
+                    <option value=0>Gospodarz zmiana 1.</option>
+                    <option value=1>Gospodarz zmiana 2.</option>
+                    <option value=2 selected="selected">Gość zmiana 1.</option>
+                    <option value=3>Gość zmiana 2.</option>
+                    <option value=4>Karta gry zawodnika</option>
+                </select> </td> </tr>
+                <tr> <td> <select class="kartyZmian_select">
+                    <option value=0>Gospodarz zmiana 1.</option>
+                    <option value=1>Gospodarz zmiana 2.</option>
+                    <option value=2>Gość zmiana 1.</option>
+                    <option value=3 selected="selected">Gość zmiana 2.</option>
+                    <option value=4>Karta gry zawodnika</option>
+                </select> </td> </tr>
+                <tr> <th> 
+                    <label class="labelCheckbox">
+                        <button onclick="kartyZmian_onPrint()" id="kartyZmian_print" class="printButton"> Drukuj karty zmian </button>
+                    </label> 
+                    <label class="labelCheckbox">
+                        <button onclick="kartyZmian_onSave()" id="kartyZmian_save" class="printButton"> Zapisz karty zmian </button>
+                    </label> 
+                </th> </tr>
             </table>
         </div>
         <div id="colLeft">
             <table class="table">
-                <tr><th colspan="2">Karta zgłoszenia drużyny do gry</th></tr>
+                <tr> <th colspan="2">Karta zgłoszenia drużyny do gry</th> </tr>
                 <tr id="tableAddOptionHead">
                     <th>Miejscowość</th>
                     <td><input tyle="text" id="zgloszenieDruzyny_miejscowosc" value="Gostyń"></td>
@@ -103,37 +83,26 @@
                     <td><input tyle="text" id="zgloszenieDruzyny_data"></td>
                 </tr>
                 <tr id="tableAddOptionHead">
-                    <th title="Wpisanie w kolumnie 'Nr Startowy' kolejnych liczb">
-                        Wpisanie liczb w kolumnie "Nr startowy"
-                    </th>
+                    <th title="Wpisanie w kolumnie 'Nr Startowy' kolejnych liczb"> Wpisanie liczb w kolumnie "Nr startowy" </th>
                     <td><label class="labelCheckbox">
                         <input type="checkbox" class="checkbox" id="zgloszenieDruzyny_numbersInNrStart" checked>
                     </label></td>
                 </tr>
-                <tr>
-                    <th colspan="2">
-                        <table id="zgloszenieDruzyny_tablePlayer"></table>
-                    </th>
-                </tr>
+                <tr> <th colspan="2"> <table id="zgloszenieDruzyny_tablePlayer"></table> </th> </tr>
                 <tr id="tableAddOptionHead">
-                    <th title="Dodanie do pliku drugiego egzemplarza Zgłoszenia Drużyny">
-                        Drugi egzemplarz Zgłoszenia Drużyny
-                    </th>
-                    <td>
-                        <label class="labelCheckbox">
-                            <input type="checkbox" class="checkbox" id="zgloszenieDruzyny_drugiEgzemplarz" checked>
-                        </label>
-                    </td>
+                    <th title="Dodanie do pliku drugiego egzemplarza Zgłoszenia Drużyny"> Drugi egzemplarz Zgłoszenia Drużyny </th>
+                    <td> <label class="labelCheckbox">
+                        <input type="checkbox" class="checkbox" id="zgloszenieDruzyny_drugiEgzemplarz" checked>
+                    </label> </td>
                 </tr>
-                <tr>
-                    <th colspan="2">
-                        <label class="labelCheckbox">
-                            <button onclick="zgloszenieDruzyny_onPrint()" id="zgloszenieDruzyny_print" class="printButton">
-                                Drukuj zgłoszenie drużyny
-                            </button>
-                        </label>
-                    </th>
-                </tr>
+                <tr> <th colspan="2">
+                    <label class="labelCheckbox">
+                        <button onclick="zgloszenieDruzyny_onPrint()" id="zgloszenieDruzyny_print" class="printButton"> Drukuj zgłoszenie drużyny </button>
+                    </label>
+                    <label class="labelCheckbox">
+                        <button onclick="zgloszenieDruzyny_onSave()" id="zgloszenieDruzyny_save" class="printButton"> Zapisz zgłoszenie drużyny </button>
+                    </label>
+                </th> </tr>
             </table>
         </div>
         <div id="colRight">
@@ -141,81 +110,53 @@
                 <tr><th colspan="3">Karty gry zawodników</th></tr>
                 <tr>
                     <th>Kolejność kart zawodników</th>
-                    <td colspan="2">
-                        <select id="kartaGryZawodnika_kolejnoscKart">
-                            <option value=0>Drukowanie kart naprzemiennie gospodarz i gość</option>
-                            <option value=1>Drukowanie kart najpierw gospodarze</option>
-                        </select>
-                    </td>
-                </tr>
+                    <td colspan="2"> <select id="kartaGryZawodnika_kolejnoscKart">
+                        <option value=0>Drukowanie kart naprzemiennie gospodarz i gość</option>
+                        <option value=1>Drukowanie kart najpierw gospodarze</option>
+                    </select> </td>
+                </tr> 
                 <tr>
                     <th>Co wpisać w linii <b class="specialFont">"MECZ"</b></th>
-                    <td colspan="2"><input tyle="text" id="kartaGryZawodnika_nameMecz"></td>
+                    <td colspan="2"> <input tyle="text" id="kartaGryZawodnika_nameMecz"> </td>
                 </tr>
-                <tr><td></td><th>Gospodarz</th><th>Gość</th></tr>
-                <tr><th>Drużyna</th><td>KS Start Gostyń</td><th id="kartyGryZawodnika_selectTeamContener"></th></tr>
+                <tr> 
+                    <td> </td> 
+                    <th>Gospodarz</th> 
+                    <th>Gość</th> 
+                </tr>
+                <tr>
+                    <th>Drużyna</th>
+                    <td>KS Start Gostyń</td>
+                    <th id="kartyGryZawodnika_selectTeamContener"></th></tr>
                 <tr>
                     <th>Wpisać <b class="specialFont">"Drużynę"</b></th>
-                    <td>
-                        <label class="labelCheckbox">
-                            <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nameTeam_home" checked>
-                        </label>
-                    </td>
-                    <td>
-                        <label class="labelCheckbox">
-                            <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nameTeam_guest" checked>
-                        </label>
-                    </td>
+                    <td><label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nameTeam_home" checked> </label></td>
+                    <td><label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nameTeam_guest" checked> </label></td>
                 </tr>
                 <tr>
                     <th>Wpisać <b class="specialFont">"MECZ"</b></th>
-                    <td>
-                        <label class="labelCheckbox">
-                            <input type="checkbox" class="checkbox" id="kartyGryZawodnika_mecz_home" checked>
-                        </label>
-                    </td>
-                    <td>
-                        <label class="labelCheckbox">
-                            <input type="checkbox" class="checkbox" id="kartyGryZawodnika_mecz_guest" checked>
-                        </label>
-                    </td>
+                    <td> <label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_mecz_home" checked> </label></td>
+                    <td> <label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_mecz_guest" checked> </label></td>
                 </tr>
                 <tr>
                     <th>Wpisać <b class="specialFont">"Tory"</b></th>
-                    <td>
-                        <label class="labelCheckbox">
-                            <input type="checkbox" class="checkbox" id="kartyGryZawodnika_tory_home" checked>
-                        </label>
-                    </td>
-                    <td>
-                        <label class="labelCheckbox">
-                            <input type="checkbox" class="checkbox" id="kartyGryZawodnika_tory_guest" checked>
-                        </label>
-                    </td>
+                    <td> <label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_tory_home" checked> </label> </td>
+                    <td> <label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_tory_guest" checked> </label> </td>
                 </tr>
                 <tr>
                     <th>Wpisać <b class="specialFont">"Nr Startowe"</b></th>
-                    <td>
-                        <label class="labelCheckbox">
-                            <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nrStart_home" checked>
-                        </label>
-                    </td>
-                    <td>
-                        <label class="labelCheckbox">
-                            <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nrStart_guest" checked>
-                        </label>
-                    </td>
+                    <td> <label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nrStart_home" checked> </label> </td>
+                    <td> <label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nrStart_guest" checked> </label> </td>
                 </tr>
                 <tr><td colspan="3"><table id="kartyGryZawodnika_tablePlayer"></table></td></tr>
-                <tr>
-                    <th colspan="3">
-                        <label class="labelCheckbox">
-                            <button onclick="kartyGryZawodnika_onPrint()" id="kartyZmian_print" class="printButton">
-                                Drukuj karty gry zawodników
-                            </button>
-                        </label>
-                    </th>
-                </tr>
+                <tr><th colspan="3">
+                    <label class="labelCheckbox">
+                        <button onclick="kartyGryZawodnika_onPrint()" id="kartyZmian_print" class="printButton"> Drukuj karty gry zawodników </button>
+                    </label>
+                    <label class="labelCheckbox">
+                        <button onclick="kartyGryZawodnika_onSave()" id="kartyZmian_save" class="printButton"> Zapisz karty gry zawodników </button>
+                    </label>
+                </th></tr>
             </table>
         </div>
     </div>
@@ -274,8 +215,7 @@
         
         function mainSetting_createSelectFonts() {
             let listFont = "";
-            for(let i=0; i<fonts.length; i++) 
-                listFont += `<option>Przykładowy tekst | KS Start Gostyń | Kręgle</option>`
+            for(let i=0; i<fonts.length; i++) listFont += `<option>Przykładowy tekst | KS Start Gostyń | Kręgle</option>`
             document.getElementById("mainSetting_font").innerHTML = listFont;
             const child = document.getElementById("mainSetting_font").children;
             for(let i=0; i<child.length; i++) {
@@ -287,8 +227,7 @@
         
         function mainSetting_addFontsToStyle() {
             let listFont = '';
-            for(let i=0; i<fonts.length; i++)
-                listFont += `@font-face {font-family:'` + fonts[i] + `'; src: url('`+fonts[i] +`')}`;
+            for(let i=0; i<fonts.length; i++) listFont += `@font-face {font-family:'` + fonts[i] + `'; src: url('`+fonts[i] +`')}`;
             document.getElementById("style").innerHTML += listFont;
         }
         
@@ -385,7 +324,7 @@
         function zgloszenieDruzyny_changePlayerHomeInKartyZmian(list_choose_index) {
             const rodzaj = document.getElementById("mainSetting_rodzaj").value;
             const home_player = player[rodzaj]
-            const list_kartyZmian_selectHomePlayer =                            document.getElementsByClassName("kartyGryZawodnika_playerSelect_home")
+            const list_kartyZmian_selectHomePlayer = document.getElementsByClassName("kartyGryZawodnika_playerSelect_home")
             
             for( let i=0; i<list_kartyZmian_selectHomePlayer.length; i++ ) {
                 let choose_player = ""
@@ -403,7 +342,7 @@
             return date[2]+"."+date[1]+"."+date[0];
         }
         
-        async function zgloszenieDruzyny_onPrint() {
+        async function zgloszenieDruzyny_createPdf() {
             const listChoosePlayer = zgloszenieDruzyny_getListChoosePlayer()
             const nameTown = document.getElementById("zgloszenieDruzyny_miejscowosc").value;
             const date = document.getElementById("zgloszenieDruzyny_data").value;
@@ -424,10 +363,21 @@
             pdfDoc_zgloszenieDruzyny_markKind(pages[0], rodzaj, skala)
             pdfDoc_zgloszenieDruzyny_drawOtherInformation(pages[0], nameTown, date, skala, font)
             pdfDoc_zgloszenieDruzyny_drawPlayerDetails(pages[0], howManyRow, printNrStart, listChoosePlayer, skala, font)
+            return pdfDoc
+        }
+
+        async function zgloszenieDruzyny_onPrint() {
+            const pdfDoc = await zgloszenieDruzyny_createPdf()
             pdfDoc_print(pdfDoc)
+        }
+
+        async function zgloszenieDruzyny_onSave() {
+            const pdfDoc = await zgloszenieDruzyny_createPdf()
+            pdfDoc_download(pdfDoc, "zgloszenieDruzyny")
         }
         
         async function pdfDoc_getEmptyForm(list_number_site) {
+            //funkja zwraca pusty dokument pdf
             const url = "pdf/main.pdf"
             const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
             const cleanPdf = await PDFDocument.load(existingPdfBytes);
@@ -438,18 +388,23 @@
         }
         
         async function pdfDoc_print(pdfDoc) {
+            //funkcja odpowiada za pokazanie okienka do drukowania z przekazanym plikiem pdf
             const pdfByte = await pdfDoc.save()
             var blob = new Blob([pdfByte], {type: "application/pdf"});
             var link = window.URL.createObjectURL(blob);
-          
-          
-var link=document.createElement('a');
-link.href=window.URL.createObjectURL(blob);
-link.download="myFileName.pdf";
-link.click();
-          
-          
             printJS({printable: link, maxWidth: 1900});
+        }
+
+        async function pdfDoc_download(pdfDoc, name) {
+            //funkcja odpowiada za pobranie przkazanego pdf
+            const d = new Date()
+            const stringDate = d.getFullYear() + "_" + (d.getMonth() + 1) + "_" + d.getDate()
+            const pdfByte = await pdfDoc.save()
+            var blob = new Blob([pdfByte], {type: "application/pdf"});
+            var link=document.createElement('a');
+            link.href=window.URL.createObjectURL(blob);
+            link.download=name + "_" + stringDate + ".pdf";
+            link.click();
         }
         
         function pdfDoc_zgloszenieDruzyny_markKind(page, rodzaj, skala, color=rgb(0, 0, 0)) {
@@ -579,7 +534,7 @@ link.click();
             return result
         }
         
-        async function kartyZmian_onPrint() {
+        async function kartyZmian_createPdf() {
             const pdfDoc = await PDFDocument.create();
             const page = pdfDoc.addPage();
             const el = document.getElementsByClassName("kartyZmian_select")
@@ -605,10 +560,19 @@ link.click();
                   color: rgb(0, 0, 0)
                 })  
             }
-            
+            return pdfDoc
+        }
+
+        async function kartyZmian_onPrint() {
+            const pdfDoc = await kartyZmian_createPdf()
             pdfDoc_print(pdfDoc)
         }
-        
+
+        async function kartyZmian_onSave() {
+            const pdfDoc = await kartyZmian_createPdf()
+            pdfDoc_download(pdfDoc, "kartyZmian")
+        }
+
         async function kartyZmian_loadKartyZmian(pdfDoc) {
             const list_url = ["pdf/home_E1.pdf", "pdf/home_E2.pdf", "pdf/guest_E1.pdf", "pdf/guest_E2.pdf", "pdf/kartaGryZawodnika.pdf"]
             let list_kartyZmian = []
@@ -701,7 +665,6 @@ link.click();
             table.innerHTML = code;
             
             kartyGryZawodnikow_changeClub()
-            
         }
         
         function kartyGryZawodnikow_getListPlayerHome(rodzaj) {
@@ -743,7 +706,7 @@ link.click();
             for( let i=0; i<elements.length; i++) elements[i].innerHTML = select_player
         }
         
-        async function kartyGryZawodnika_onPrint() {
+        async function kartyGryZawodnika_createPdf() {
             const rodzaj = document.getElementById("mainSetting_rodzaj").value;
             const kolejnoscKart = document.getElementById("kartaGryZawodnika_kolejnoscKart").value
             const nameMecz = document.getElementById("kartaGryZawodnika_nameMecz").value
@@ -796,7 +759,17 @@ link.click();
             
             kartyGryZawodnika_drawData(pages, kartyGry_data, skala, font)
             
+            return pdfDoc
+        }
+
+        async function kartyGryZawodnika_onPrint() {
+            const pdfDoc = await kartyGryZawodnika_createPdf()
             pdfDoc_print(pdfDoc)
+        }
+
+        async function kartyGryZawodnika_onSave() {
+            const pdfDoc = await kartyGryZawodnika_createPdf()
+            pdfDoc_download(pdfDoc, "kartyGryZawodnika")
         }
         
         function kartyGryZawodnika_createData(namePlayer, nameMecz, nameTeam, nrStart, drawMecz, drawTeam, drawNrStart, drawTory, rodzaj, isGuest) {
