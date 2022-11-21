@@ -62,12 +62,8 @@
                     <option value=4>Karta gry zawodnika</option>
                 </select> </td> </tr>
                 <tr> <th> 
-                    <label class="labelCheckbox">
-                        <button onclick="kartyZmian_onPrint()" id="kartyZmian_print" class="printButton"> Drukuj karty zmian </button>
-                    </label> 
-                    <label class="labelCheckbox">
-                        <button onclick="kartyZmian_onSave()" id="kartyZmian_save" class="printButton"> Zapisz karty zmian </button>
-                    </label> 
+                    <div> <button onclick="kartyZmian_onPrint()" id="kartyZmian_print" class="printButton"> Drukuj karty zmian </button> </div>
+                    <div> <button onclick="kartyZmian_onSave()" id="kartyZmian_save" class="saveButton"> Zapisz karty zmian </button> </div>
                 </th> </tr>
             </table>
         </div>
@@ -76,17 +72,17 @@
                 <tr> <th colspan="2">Karta zgłoszenia drużyny do gry</th> </tr>
                 <tr id="tableAddOptionHead">
                     <th>Miejscowość</th>
-                    <td><input tyle="text" id="zgloszenieDruzyny_miejscowosc" value="Gostyń"></td>
+                    <td> <input tyle="text" id="zgloszenieDruzyny_miejscowosc" value="Gostyń"> </td>
                 </tr>
                 <tr id="tableAddOptionHead">
                     <th>Data</th>
-                    <td><input tyle="text" id="zgloszenieDruzyny_data"></td>
+                    <td> <input tyle="text" id="zgloszenieDruzyny_data"> </td>
                 </tr>
                 <tr id="tableAddOptionHead">
                     <th title="Wpisanie w kolumnie 'Nr Startowy' kolejnych liczb"> Wpisanie liczb w kolumnie "Nr startowy" </th>
-                    <td><label class="labelCheckbox">
+                    <td> <label class="labelCheckbox">
                         <input type="checkbox" class="checkbox" id="zgloszenieDruzyny_numbersInNrStart" checked>
-                    </label></td>
+                    </label> </td>
                 </tr>
                 <tr> <th colspan="2"> <table id="zgloszenieDruzyny_tablePlayer"></table> </th> </tr>
                 <tr id="tableAddOptionHead">
@@ -96,12 +92,8 @@
                     </label> </td>
                 </tr>
                 <tr> <th colspan="2">
-                    <label class="labelCheckbox">
-                        <button onclick="zgloszenieDruzyny_onPrint()" id="zgloszenieDruzyny_print" class="printButton"> Drukuj zgłoszenie drużyny </button>
-                    </label>
-                    <label class="labelCheckbox">
-                        <button onclick="zgloszenieDruzyny_onSave()" id="zgloszenieDruzyny_save" class="printButton"> Zapisz zgłoszenie drużyny </button>
-                    </label>
+                    <div> <button onclick="zgloszenieDruzyny_onPrint()" id="zgloszenieDruzyny_print" class="printButton"> Drukuj zgłoszenie drużyny </button> </div>
+                    <div> <button onclick="zgloszenieDruzyny_onSave()" id="zgloszenieDruzyny_save" class="saveButton"> Zapisz zgłoszenie drużyny </button> </div>
                 </th> </tr>
             </table>
         </div>
@@ -119,16 +111,8 @@
                     <th>Co wpisać w linii <b class="specialFont">"MECZ"</b></th>
                     <td colspan="2"> <input tyle="text" id="kartaGryZawodnika_nameMecz"> </td>
                 </tr>
-                <tr> 
-                    <td> </td> 
-                    <th>Gospodarz</th> 
-                    <th>Gość</th> 
-                </tr>
-                <tr>
-                    <th>Drużyna</th>
-                    <td>KS Start Gostyń</td>
-                    <th id="kartyGryZawodnika_selectTeamContener"></th></tr>
-                <tr>
+                <tr> <td> </td> <th>Gospodarz</th> <th>Gość</th> </tr>
+                <tr> <th>Drużyna</th> <td>KS Start Gostyń</td> <th id="kartyGryZawodnika_selectTeamContener"></th></tr> <tr>
                     <th>Wpisać <b class="specialFont">"Drużynę"</b></th>
                     <td><label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nameTeam_home" checked> </label></td>
                     <td><label class="labelCheckbox"> <input type="checkbox" class="checkbox" id="kartyGryZawodnika_nameTeam_guest" checked> </label></td>
@@ -150,12 +134,8 @@
                 </tr>
                 <tr><td colspan="3"><table id="kartyGryZawodnika_tablePlayer"></table></td></tr>
                 <tr><th colspan="3">
-                    <label class="labelCheckbox">
-                        <button onclick="kartyGryZawodnika_onPrint()" id="kartyZmian_print" class="printButton"> Drukuj karty gry zawodników </button>
-                    </label>
-                    <label class="labelCheckbox">
-                        <button onclick="kartyGryZawodnika_onSave()" id="kartyZmian_save" class="printButton"> Zapisz karty gry zawodników </button>
-                    </label>
+                    <div> <button onclick="kartyGryZawodnika_onPrint()" id="kartyZmian_print" class="printButton"> Drukuj karty gry zawodników </button> </div>
+                    <div> <button onclick="kartyGryZawodnika_onSave()" id="kartyZmian_save" class="saveButton"> Zapisz karty gry zawodników </button> </div>
                 </th></tr>
             </table>
         </div>
