@@ -178,11 +178,19 @@
         const fonts = [
             'font/VT323.ttf',
             'font/IBM.ttf',
-            'font/Syne.ttf',
+            // 'font/Syne.ttf',
             'font/Beanie.ttf',
             'https://pdf-lib.js.org/assets/ubuntu/Ubuntu-R.ttf',
             "font/Roboto.ttf",
             "font/Cookie.ttf"
+        ]
+        const fontsName = [
+            "Normalna czcionka",
+            "IBM",
+            "Bazgroły",
+            "Ubuntu",
+            "Roboto",
+            "Kaligrafia"
         ]
         let list_player = null
         
@@ -198,7 +206,7 @@
         
         function mainSetting_createSelectFonts() {
             let listFont = "";
-            for(let i=0; i<fonts.length; i++) listFont += `<option>Przykładowy tekst | KS Start Gostyń | Kręgle</option>`
+            for(let i=0; i<fonts.length; i++) listFont += `<option>` + fontsName[i] + `</option>`
             document.getElementById("mainSetting_font").innerHTML = listFont;
             const child = document.getElementById("mainSetting_font").children;
             for(let i=0; i<child.length; i++) {
