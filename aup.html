@@ -1,0 +1,275 @@
+<html>
+    <head>
+        <title>Asystent Uzupełniania Protokołu</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="icon.ico">
+    </head>
+    <body>
+        <div id="contener">
+            <div id="titleContener">
+                <h1>Asystent Uzupełniania Protokołu</h1>
+                <button class="printButton" onclick="window.location.href='/'">Generator Dokumentów Meczowych</button>
+            </div>
+            <div id="contenerMainSettings">
+                <table class="table" id="table_typeSelect">
+                    <tr><th colspan="2">Podstawowe ustawienia</th></tr>
+                    <tr id="tableAddOptionHead">
+                        <th>Rodzaj rozgrywek ligowych</th>
+                        <td> <select id="mainSetting_type" class="select_main" onChange="loadSite()">
+                            <option value="SM" checked>Superliga Mężczyzn</option>
+                            <option value="CLJ">CLJ</option>
+                        </select> </td>
+                    </tr>
+                </table>
+                <table class="table teamTable">
+                    <tr> <th colspan="3">Drużyna Gospodarzy</th></tr>
+                    <tr id="tableAddOptionHead">
+                        <th>Drużyna</th>
+                        <td> KS Start Gostyń </td>
+                        <th></th>
+                    </tr>
+                    <tr> 
+                        <th colspan=2 rowspan="2"> <table id="listPlayers_home" class="listPlayers"></table> </th> 
+                        <td><table class="tableResult"></table></td>
+                    </tr>
+                    <tr> <th>
+                        <div> <button onclick="copyTableResult(this)" class="printButton"> Kopiuj tabele </button> </div>
+                    </th> </tr>
+                </table>
+
+                <table class="table teamTable">
+                    <tr> <th colspan="3">Drużyna Gości</th> </tr>
+                    <tr id="tableAddOptionHead">
+                        <th>Drużyna</th>
+                        <td id="selectGuestTeam"> <select ></select> </td>
+                        <th></th>
+                    </tr>
+                    <tr> 
+                        <th colspan="2" rowspan=2> <table id="listPlayers_guest" class="listPlayers"></table> </th> 
+                        <td><table class="tableResult"></table></td>
+                    </tr>
+                    <tr> <th>
+                        <div> <button onclick="copyTableResult(this)" class="printButton"> Kopiuj tabele </button> </div>
+                    </th> </tr>
+                </table>
+
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    let listLicenses = []
+    getDictBirthday()
+
+    function getDictBirthday() {
+        listBirthday = {}
+        fetch('birthday.txt')
+        .then(response => response.text())
+        .then(text => {
+            lines = text.split("\n")
+            lines.forEach(line => {
+                data = line.split(" ")
+                if(data.length == 2) {
+                    listBirthday[data[0]] = data[1]
+                }
+            })
+            downloadLicensesFromGoogleSheet(listBirthday)
+        })
+    }
+
+    function downloadLicensesFromGoogleSheet(listBirthday) {
+         const urlGoogleSheetLicenses = "https://docs.google.com/spreadsheets/d/1VIDJbQhEMoFHlWcp8_ut3QZ8FTwccHnJ5lzx9LLyLME/gviz/tq?tqx=out:csv"
+        fetch(urlGoogleSheetLicenses)
+        .then(res => res.text())
+        .then(rep => {
+            var rows = rep.split("\n")
+            rows.shift()
+            for(let i=0; i<rows.length; i++) {
+                rows[i] = rows[i].replaceAll('"', '')
+                row = rows[i].split(",")
+                for(let i=0; i<row.length; i++) row[i] = row[i].trim()
+                birthday = (row[0] in listBirthday) ? listBirthday[row[0]] : ""
+                name = row[3]
+                nameSplit = name.split(" ")
+                if(nameSplit.length == 2) name = nameSplit[1] + " " + nameSplit[0]
+                listLicenses.push({nameMain: row[3], name: name, license: row[0], team: row[4], category: row[5], birthday: birthday})
+            }
+            loadSite()
+        })
+    }
+
+    function loadSite() {
+        firstTeam = setSelectGuestTeam()
+        generateTableToSelectPlayer("listPlayers_home", "KS Start Gostyń")
+        generateTableToSelectPlayer("listPlayers_guest", firstTeam)
+    }
+
+    function getPlayersAndTeams() {
+        //Funkcja zwraca lostę graczy, którzy spełniają wymagania kategorii rozgrywek
+        const typeLeague = document.getElementById("mainSetting_type").value //SM, CLJ
+        let listCategory = ["Senior", "Junior", "Junior młodszy"]
+        if (typeLeague == "CLJ") listCategory = ["Juniorka młodsza", "Junior młodszy", "Junior", "Juniorka"]
+
+        let listPlayers = []
+        let listTeams = []
+
+        listLicenses.forEach(el => {
+            if(listCategory.includes(el.category)) {
+                listPlayers.push(el)
+                if(!listTeams.includes(el.team)) listTeams.push(el.team)
+            } 
+        })
+        listTeams.sort()
+        return [listPlayers, listTeams]
+    }
+
+    function setSelectGuestTeam() {
+        let [_, listTeams] = getPlayersAndTeams()
+        let text = "<select onChange='onSelectGuestTeam(this)'>"
+            listTeams.forEach(team => {
+            text += "<option value='" + team + "'>" + team +  "</option>"
+        })
+        text += "</select>"
+        document.getElementById("selectGuestTeam").innerHTML = text
+        return listTeams.length ? listTeams[0] : ""
+    }
+
+    function onSelectGuestTeam(selectEl) {
+        const selectedTeam = selectEl.value
+        generateTableToSelectPlayer("listPlayers_guest", selectedTeam)
+        generateTableResult(document.getElementById("listPlayers_guest"))
+    }
+    
+    function generateTableToSelectPlayer(idTable, team) {
+        const typeLeague = document.getElementById("mainSetting_type").value //SM, CLJ
+        var [numberOfPlayers, numberOfReserves] = typeLeague == "SM" ? [6, 4] : [4, 3]
+        let [listPlayers, _] = getPlayersAndTeams()
+        const listPlayersAfterFilter = filterListPlayersByTeam(listPlayers, team)
+        const elSelect = createSelectPlayerElement(listPlayersAfterFilter)
+        let text = "<tr><th colspan=5>Wybór graczy</th></tr>"
+        text += "<tr><th>Pozycja</th><th>Gracz</th><th>Imię i nazwisko</th><th>Licencja</th><th>Data urodzenia</th></tr>";
+        for(let i = 0; i < (numberOfPlayers + numberOfReserves); i++) {
+            const playerClass = (i < numberOfPlayers) ? "playerPlay" : "playerReserves"
+            const playerPosition = (i < numberOfPlayers) ? "Gracz " + (i+1) : "Rezerwowy"
+            text += `<tr class='tablePlayerRow, ` + playerClass +`'>
+                <td>` + playerPosition+ `</td>
+                <td>` + elSelect + `</td>
+                <td><input onKeyUp="generateTableResult(this)" class="listPlayers_inputName"></input></td>
+                <td><input onKeyUp="generateTableResult(this)" class="listPlayers_inputLicenses"></input></td>
+                <td><input onKeyUp="generateTableResult(this)" class="listPlayers_inputBirthday"></input></td>
+            </tr>`;
+        }
+        document.getElementById(idTable).innerHTML = text
+        generateTableResult(document.getElementById(idTable))
+    }
+
+    function createSelectPlayerElement(listPlayers) {
+        let text = "<select onChange='listPlayers_afterChoosePlayer(this)'>"
+        listPlayers.forEach(el => {
+            text += "<option value='" + el.license + "'>" + el.nameMain +  "</option>"
+        })
+        text += "</select>"
+        return text
+    }
+
+    function filterListPlayersByTeam(listPlayers, team) {
+        let newListPlayer = [{nameMain: "", name: "", license: "", birthday: ""}]
+        listPlayers.forEach(el => {
+            if(team == "" || el.team == team) newListPlayer.push(el)
+        })
+        newListPlayer.sort((a, b) => {
+            if(a.nameMain < b.nameMain) return -1
+            if(a.nameMain > b.nameMain) return 1
+            return 0
+        })
+        return newListPlayer
+    }
+
+    function listPlayers_afterChoosePlayer(el) {
+        selectedLicenses = el.value
+        selectedPlayerName = selectedPlayerBirthday = ""
+        listLicenses.forEach(el => {
+            if(el.license == selectedLicenses) {
+                selectedPlayerName = el.name
+                selectedPlayerBirthday = el.birthday
+            }
+        })
+        tableRow = el.parentElement.parentElement
+        elInputName = tableRow.getElementsByClassName("listPlayers_inputName")[0]
+        elInputLicenses = tableRow.getElementsByClassName("listPlayers_inputLicenses")[0]
+        elInputBirthday = tableRow.getElementsByClassName("listPlayers_inputBirthday")[0]
+        
+        elInputLicenses.value = selectedLicenses
+        elInputName.value = selectedPlayerName
+        elInputBirthday.value = selectedPlayerBirthday
+        
+        generateTableResult(el)
+    }
+
+    function generateTableResult(elTeam) {
+        while(!elTeam.classList.contains("teamTable")) elTeam = elTeam.parentElement
+        elTableResult = elTeam.getElementsByClassName("tableResult")[0]
+        listRowPlayerPlay = elTeam.getElementsByClassName("playerPlay")
+        listRowPlayerReserves = elTeam.getElementsByClassName("playerReserves")
+
+        elTableResult.innerHTML = ""
+        numberOfPlayerPlay = listRowPlayerPlay.length
+        for(let i=0; i<numberOfPlayerPlay; i++) {
+            const [name, license, birthday] = getInfoFromPlayerRow(listRowPlayerPlay[i])
+            elTableResult.innerHTML += getTableResultPlayerRow(name, license, birthday, true)
+            elTableResult.innerHTML += getTableResultPlayerRow("", "", "")
+            elTableResult.innerHTML += getTableResultPlayerRow("", "", "")
+            if(i+1 < numberOfPlayerPlay) elTableResult.innerHTML += `<tr><td class='tableResultCellWhite' colspan=4></td></tr>`
+        }
+        for(let i=0; i<listRowPlayerReserves.length; i++) {
+            const [name, license, birthday] = getInfoFromPlayerRow(listRowPlayerReserves[i])
+            elTableResult.innerHTML += getTableResultPlayerRow(name, license, birthday, true)
+        }
+
+    }
+
+    function getTableResultPlayerRow(name, licenses, birthday, heightNo0 = false) {
+        const classHeight = heightNo0 ? "tableResultCellHeight" : ""
+        text = `<tr><td class='tableResultCellGreen ` + classHeight + `' colspan=4>`+name+`</td></tr>`
+        text += `<tr>
+                    <td class='tableResultCellGray ` + classHeight + `' colspan=2>` + licenses + `</td>
+                    <td class='tableResultCellGray ` + classHeight + `' colspan=2>` + birthday + `</td>
+                </tr>`
+        return text
+    }
+
+    function getInfoFromPlayerRow(elPlayerRow) {
+        const name = elPlayerRow.getElementsByClassName("listPlayers_inputName")[0].value
+        const license = elPlayerRow.getElementsByClassName("listPlayers_inputLicenses")[0].value
+        const birthday = elPlayerRow.getElementsByClassName("listPlayers_inputBirthday")[0].value
+        return [name, license, birthday]
+    }
+
+    function copyTableResult(elTeam)  {
+        while(!elTeam.classList.contains("teamTable")) elTeam = elTeam.parentElement
+        elTableResult = elTeam.getElementsByClassName("tableResult")[0]
+        
+        var body = document.body, range, sel;
+        if (document.createRange && window.getSelection) {
+            range = document.createRange();
+            sel = window.getSelection();
+            sel.removeAllRanges();
+            try {
+                range.selectNodeContents(elTableResult);
+                sel.addRange(range);
+            } catch (e) {
+                range.selectNode(elTableResult);
+                sel.addRange(range);
+            }
+        } else if (body.createTextRange) {
+            range = body.createTextRange();
+            range.moveToElementText(elTableResult);
+            range.select();
+        }
+        document.execCommand("Copy")
+        sel = window.getSelection();
+        sel.removeAllRanges();
+    }
+
+</script>

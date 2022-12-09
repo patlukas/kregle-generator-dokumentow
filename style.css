@@ -6,11 +6,14 @@
 }
 #titleContener > h1 {
     margin: 0 -20;
-    padding: 15px 0;
+    padding: 15px 0 5px;
     font-size: 34px;
-    border-bottom: 3px dotted black;
     user-select: none;
     font-family: 'Black Ops One', cursive;
+}
+#titleContener {
+    padding-bottom: 10px;
+    border-bottom: 3px dotted black;
 }
 .error__playerSelectedMultipleTimes {
     background-color: #FFD700;
@@ -37,6 +40,10 @@
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.59);
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.59);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.59);
+}
+.printButton:active, .saveButton:active {
+    transform: scale(0.92);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
 .saveButton {
     cursor: pointer;
@@ -119,4 +126,55 @@ input[type=checkbox], select{
     border: 3px solid #00f;
     font-size: 14px;
     font-weight: 700;
+}
+
+.tableResult {
+    font-family: "Arial";
+    padding: 0;
+    white-space: nowrap;
+}
+
+.tableResultCellHeight {
+    height: 13px;
+}
+
+.tableResultCellGreen {
+    background-color: #99ffcc;
+    border-style: dotted;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 0 8px;
+}
+
+.tableResultCellGray {
+    background-color: #ccc;
+    border-style: dotted;
+    text-align: center;
+    font-size: 10px;
+    padding: 0 8px;
+    min-width: 75px;
+}
+
+.tableResultCellWhite {
+    background-color: #fff;
+    border-style: none;
+    text-align: center;
+    padding: 0 8px;
+}
+#table_typeSelect {
+    margin: 0 30px 20px 0;
+    margin: auto;
+}
+
+.listPlayers_inputLicenses {
+    width: 110;
+}
+
+.listPlayers_inputBirthday {
+    width: 110;
+}
+
+.teamTable {
+    margin: 20px auto;
 }
